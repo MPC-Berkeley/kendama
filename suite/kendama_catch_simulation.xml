@@ -1,0 +1,60 @@
+<mujoco model="kendama ball in cup">
+
+  <!-- ## Based on the ball_in_cup.xml from dm_control -->
+  <include file="./common/visual.xml"/>
+  <!-- <include file="./common/skybox.xml"/> -->
+  <include file="./common/materials.xml"/>
+
+  <default>
+    <velocity ctrllimited="true" ctrlrange="-200 200" gear="20"/>
+    <default class="cup">
+      <joint type="slide" damping="5e-4"/>
+      <geom type="capsule" size=".008" material="self" />
+    </default>
+
+    <default class="bouncy">
+      <geom condim="6" priority="1" friction="0.5 0.001 0.001" solref="-5000 -55.5" solimp="0.5 0.9 0.01"/>
+    </default>
+    <geom solimp=".9 .9 .01" solref="0.03 0.25" />
+  </default>
+
+  <worldbody>
+    <light name="light" directional="true" diffuse=".6 .6 .6" pos="0 0 2" specular=".3 .3 .3"/> 
+    <camera name="cam0" pos="0 -1 .8" xyaxes="1 0 0 0 1 2"/>
+    <camera name="cam1" pos="0 -1 .4" xyaxes="1 0 0 0 0 1" />
+    <camera name="cam2" pos="0 -1.4 1.2" xyaxes="1 0 0 0 1 2"/>
+
+    <body name="cup" pos="0 0 .6" childclass="cup">
+      <joint name="cup_x" axis="1 0 0"/>
+      <joint name="cup_z" axis="0 0 1"/>
+      <geom name="cup_part_1" fromto="-.03 0 -.08 -.02 0 -.09" />
+      <geom name="cup_part_2" fromto="-.02 0 -.09 .02 0 -.09"  mass="1"/>
+      <geom name="cup_part_3" fromto=".02 0 -.09 .03 0 -.08" />
+      <site name="cup" pos="0 0 -.09" size=".005"/>
+      <site name="target" type="box" pos="0 0 -.05" size=".075 .006 .005" group="4"/>
+    </body>
+
+    <body name="ball" pos="0 0 .6">
+      <joint name="ball_x" type="slide" axis="1 0 0" />
+      <joint name="ball_z" type="slide" axis="0 0 1"/>
+      <geom name="ball" type="sphere" size=".0525" material="effector" mass="0.005" class="bouncy"/>
+      <site name="ball" size=".005"/>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <velocity name="x" joint="cup_x" />
+    <velocity name="z" joint="cup_z" />
+    <motor name="Fz" joint="cup_z" gear="1" ctrllimited="true" ctrlrange="-10 10"/>
+  </actuator>
+
+  <tendon>
+    <spatial name="string" limited="true" range="0 0.43" width="0.003">
+      <site site="ball"/>
+      <site site="cup"/>
+    </spatial>
+  </tendon>
+
+
+</mujoco>
+
