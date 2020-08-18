@@ -5,6 +5,7 @@ This repository contains the source code from our work on Learning to Play Cup-a
 ![](https://media2.giphy.com/media/WsvZkkNLGjUdpBAKux/giphy.gif)
 
 Full text of our paper can be found [here](https://arxiv.org/abs/2007.09562):
+
 Bujarbaruah, M., Zheng, T., Shetty, A., Sehr, M., & Borrelli, F. (2020). Learning to Play Cup-and-Ball with Noisy Camera Observations. arXiv preprint arXiv:2007.09562.
 
 ```
@@ -42,11 +43,6 @@ $ cp -r kendama/suite dm_control/suite
 Note that dm_control/suite already contains \__init__.py and this will overwrite it. The only additional content is the line to import the kendama model:
 ```
 from dm_control.suite import kendama_catch_simulation
-```
-
-4) Install dependencies
-```
-python3 -m pip install -r kendama/requirements.txt
 ```
 
 ## Getting Started
