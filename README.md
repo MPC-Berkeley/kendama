@@ -4,7 +4,7 @@ This repository contains the source code from our work on Learning to Play Cup-a
 
 ![](https://media2.giphy.com/media/WsvZkkNLGjUdpBAKux/giphy.gif)
 
-Full text of our paper can be found [here](https://arxiv.org/abs/2007.09562){:target="_blank"}:
+Full text of our paper can be found [here](https://arxiv.org/abs/2007.09562):
 
 Bujarbaruah, M., Zheng, T., Shetty, A., Sehr, M., & Borrelli, F. (2020). Learning to Play Cup-and-Ball with Noisy Camera Observations. arXiv preprint arXiv:2007.09562.
 
